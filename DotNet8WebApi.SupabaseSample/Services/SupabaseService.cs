@@ -8,8 +8,8 @@ public class SupabaseService
 
     public SupabaseService(IConfiguration configuration)
     {
-        var url = configuration["Supabase:Url"];
-        var key = configuration["Supabase:Key"];
+        var url = Environment.GetEnvironmentVariable("SUPABASE_URL");
+        var key = Environment.GetEnvironmentVariable("SUPABASE_KEY");
         _client = new Client(url, key);
     }
 
