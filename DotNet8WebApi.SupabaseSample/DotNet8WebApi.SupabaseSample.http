@@ -1,6 +1,0 @@
-@DotNet8WebApi.SupabaseSample_HostAddress = http://localhost:5162
-
-GET {{DotNet8WebApi.SupabaseSample_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
