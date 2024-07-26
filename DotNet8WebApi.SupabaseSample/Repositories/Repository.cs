@@ -1,5 +1,4 @@
-﻿using DotNet8WebApi.SupabaseSample.Services;
-using Supabase.Postgrest.Models;
+﻿using Supabase.Postgrest.Models;
 
 namespace DotNet8WebApi.SupabaseSample.Repositories;
 

@@ -1,5 +1,4 @@
 ﻿using DotNet8WebApi.SupabaseSample.Db;
-using DotNet8WebApi.SupabaseSample.Services;
 
 namespace DotNet8WebApi.SupabaseSample.Repositories;
 
