@@ -465,3 +465,104 @@ Alternatively, you can add these settings to your `appsettings.json` file:
   }
 }
 ```
+
+Sure, here's a detailed guide on how to create a Supabase project and obtain the URL and Key.
+
+### Creating a Supabase Project and Obtaining URL and Key
+
+#### Step 1: Sign Up and Log In
+
+1. **Sign Up:**
+   - Go to [Supabase](https://supabase.io/).
+   - Click on `Sign Up` and create an account using your email, GitHub, or any other supported method.
+
+2. **Log In:**
+   - After signing up, log in to your Supabase account.
+
+#### Step 2: Create a New Project
+
+1. **Dashboard:**
+   - Once logged in, you will be redirected to the Supabase dashboard.
+
+2. **Create a New Project:**
+   - Click on the `New Project` button.
+   - Fill in the details for your new project:
+      - **Project Name:** Choose a unique name for your project.
+      - **Organization:** Select the organization for your project (if applicable).
+      - **Database Password:** Set a strong password for your database. Ensure you remember this password as it will be needed for database access.
+      - **Region:** Select the region closest to you or your user base.
+
+3. **Create Project:**
+   - Click on `Create Project` to create your new Supabase project. This may take a few moments.
+
+#### Step 3: Accessing Project URL and API Key
+
+1. **Project Settings:**
+   - Once the project is created, you will be redirected to the project dashboard.
+   - Click on the `Settings` tab in the left sidebar.
+
+2. **API Settings:**
+   - Under `Settings`, click on `API`.
+   - Here, you will find the `Project URL` and `API Key`.
+
+3. **Copy the URL and Key:**
+   - **Project URL:** This is the base URL for your Supabase project. Copy the URL, which looks something like `https://xyzcompany.supabase.co`.
+   - **API Key:** This is the secret key to access your Supabase project. Copy the `anon` key under the `Project API keys` section for client-side usage. For server-side, use the `service_role` key.
+
+### Example Configuration in .env
+
+Create a `.env` file in the root of your project and add the copied URL and Key:
+
+```dotenv
+SUPABASE_URL=https://your-supabase-url.supabase.co
+SUPABASE_KEY=your-supabase-key
+```
+
+Replace `https://your-supabase-url.supabase.co` and `your-supabase-key` with the actual URL and key you obtained from the Supabase dashboard.
+
+### Example Configuration in appsettings.json
+
+Alternatively, you can add these settings to your `appsettings.json` file:
+
+```json
+{
+  "Supabase": {
+    "Url": "https://your-supabase-url.supabase.co",
+    "Key": "your-supabase-key"
+  }
+}
+```
+
+#### SupabaseService.cs
+
+```csharp
+using Supabase;
+using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
+using System;
+
+namespace SupabaseIntegration
+{
+    public class SupabaseService
+    {
+        private readonly Client _client;
+
+        public SupabaseService(IConfiguration configuration)
+        {
+            var url = configuration["Supabase:Url"];
+            var key = configuration["Supabase:Key"];
+            _client = new Client(url, key);
+        }
+
+        public async Task InitializeAsync()
+        {
+            await _client.InitializeAsync();
+        }
+
+        public Client GetClient()
+        {
+            return _client;
+        }
+    }
+}
+```
