@@ -1,6 +1,5 @@
 using DotNet8WebApi.SupabaseSample.Db;
 using DotNet8WebApi.SupabaseSample.Mapping;
-using DotNet8WebApi.SupabaseSample.Repositories;
 
 namespace DotNet8WebApi.SupabaseSample.Features;
 
